@@ -6,4 +6,5 @@ public interface OSView {
 	Context getContext();
 	OSHandler getHandler();
 	OSPresenter getPresenter();
+	<T> void update(int requestCode, int resultCode, T data);
 }

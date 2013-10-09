@@ -1,9 +1,11 @@
 package com.os.droid405.framework;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 
 public abstract class OSHandler extends Handler {
 	public static final int SUCCESS = 1;
@@ -11,13 +13,11 @@ public abstract class OSHandler extends Handler {
 	public static final int NETWORK_CONNECTION_UNAVAILABLE = 100;
 	public static final int CONNECTION_TIMEOUT = 101;
 	
-	private Context mContext;
+	private OSView mOSView;
 	
-	public OSHandler(Context context) {
-		mContext = context;
+	public OSHandler(OSView view) {
+		mOSView = view;
 	}
-	
-	public OSHandler() {}
 	
 	@Override
 	public void handleMessage(Message msg) {
@@ -38,7 +38,7 @@ public abstract class OSHandler extends Handler {
 	}
 	
 	public Context getContext() {
-		return mContext;
+		return mOSView.getContext()	;
 	}
 	
 	public  void sendMessage(int what, Bundle data) {
@@ -67,4 +67,8 @@ public abstract class OSHandler extends Handler {
 	public void handleError(Bundle data) {}
 	public void handleNetworkUnavailale() {}
 	public void handleConnectionTimeout() {}
+	
+	protected View findViewById(int id) {
+		return ((Activity)mOSView).findViewById(id);
+	}
 }

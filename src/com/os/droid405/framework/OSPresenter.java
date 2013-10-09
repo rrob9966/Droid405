@@ -18,4 +18,8 @@ public abstract class OSPresenter {
 	}
 	
 	public abstract <T> void update(int requestCode, int resultCode, T data);
+	
+	public <T> void notifyView(int requestCode, int resultCode, T data) {		
+		mView.update(requestCode, resultCode, data);
+	}
 }
