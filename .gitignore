@@ -1,6 +1,9 @@
 .DS_Store
+<<<<<<< HEAD
 .project
 .classpath
 project.properties
+=======
+>>>>>>> d98ab4022a893f2202a6879b0cc11c1ae752199d
 bin/
 gen/
